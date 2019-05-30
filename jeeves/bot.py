@@ -45,7 +45,7 @@ def monkey_emit(self, record):
         match = self.regex.match(self.ansi_escape.sub('', msg))
         content = match.group(2)
         stream = self.stream
-        if content == self.last_record and '\n' not in content:
+        if content == self.last_record and '\n' not in msg:
             self.count+=1
             msg = f"{msg} x {self.count}"
             stream.write(f'\r{msg}')
@@ -757,7 +757,7 @@ class Jeeves(discord.Client):
                     if edit:
                         await self.safe_send_message(dm_tracking_channel, embed=jump_embed, content=f'{self.divider_content}**EDITED MSG From:** *{message.author.mention}*:\n```{message.clean_content}```\nID: `{message.author.id}`')
                     else:
-                        await self.safe_send_message(dm_tracking_channel, embed=jump_embed, content='{self.divider_content}**From:** *{message.author.mention}*:\n```{message.clean_content}```\nID: `{message.author.id}`')
+                        await self.safe_send_message(dm_tracking_channel, embed=jump_embed, content=f'{self.divider_content}**From:** *{message.author.mention}*:\n```{message.clean_content}```\nID: `{message.author.id}`')
                 return
         elif isinstance(message.channel, discord.GroupChannel):
             if message.author != self.user:
