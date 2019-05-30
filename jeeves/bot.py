@@ -52,7 +52,7 @@ def monkey_emit(self, record):
         else:
             self.last_record = content
             if self.count > 1:
-                stream.write(f'{msg}\n')
+                stream.write(f'\n{msg}')
             else:
                 stream.write(f'{msg}')
             self.count = 1
