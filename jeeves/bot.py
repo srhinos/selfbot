@@ -522,7 +522,7 @@ class Jeeves(discord.Client):
     async def cmd_changename(self, author, string_name):
         """
         Usage: {command_prefix}changegame ["new game name"]
-        Changes the "Now Playinfg..." game on Discord!
+        Changes the "Now Playing..." game on Discord!
         """
 
         await self.user.edit(password=self.password, username=string_name)
